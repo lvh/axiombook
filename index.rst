@@ -13,7 +13,7 @@ Contents:
 
    intro.rst
    installation.rst
-
+   items.rst
 
 
 Indices and tables
