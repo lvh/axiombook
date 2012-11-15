@@ -1,10 +1,5 @@
-.. The Axiom Book documentation master file, created by
-   sphinx-quickstart on Thu Nov 15 18:57:30 2012.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Welcome to The Axiom Book's documentation!
-==========================================
+The Axiom Book
+==============
 
 Contents:
 
