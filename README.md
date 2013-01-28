@@ -26,3 +26,13 @@ format you want (e.g. `html` or `pdf`).
 Contributions and issue reports are welcome on [Github](github).
 
 [github]: https://github.com/lvh/axiombook
+
+## Testing
+
+Most of the Axiom book is written using doctests, so the book can
+largely be automatically verified. This is done automatically by
+[Travis CI](travis).
+
+[![Build Status](https://travis-ci.org/lvh/axiombook.png?branch=master)](https://travis-ci.org/lvh/axiombook)
+
+[travis]: https://travis-ci.org/lvh/axiombook
