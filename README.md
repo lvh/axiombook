@@ -1,13 +1,13 @@
 # The Axiom Book
 
-The Axiom Book is intended as a primer to [Axiom](axiom), an object
+The Axiom Book is intended as a primer to [Axiom][axiom], an object
 store for Python built on top of SQLite.
 
 [axiom]: http://pypi.python.org/pypi/Axiom
 
 ## Reading
 
-The [current version of the book](current) is graciously hosted by
+The [current version of the book][current] is graciously hosted by
 [ReadTheDocs](rtd).
 
 [current]: https://the-axiom-book.readthedocs.org/en/latest/
@@ -15,7 +15,7 @@ The [current version of the book](current) is graciously hosted by
 
 ## Building
 
-The repository is a fairly standard [Sphinx](sphinx) repository. To
+The repository is a fairly standard [Sphinx][sphinx] repository. To
 build the documentation, run `make [builder]` where builder is the
 format you want (e.g. `html` or `pdf`).
 
@@ -23,7 +23,7 @@ format you want (e.g. `html` or `pdf`).
 
 ## Contributing
 
-Contributions and issue reports are welcome on [Github](github).
+Contributions and issue reports are welcome on [Github][github].
 
 [github]: https://github.com/lvh/axiombook
 
@@ -31,7 +31,7 @@ Contributions and issue reports are welcome on [Github](github).
 
 Most of the Axiom book is written using doctests, so the book can
 largely be automatically verified. This is done automatically by
-[Travis CI](travis).
+[Travis CI][travis].
 
 [![Build Status](https://travis-ci.org/lvh/axiombook.png?branch=master)](https://travis-ci.org/lvh/axiombook)
 
