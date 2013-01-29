@@ -9,6 +9,7 @@ Contents:
    intro.rst
    installation.rst
    items.rst
+   stores.rst
 
 
 Indices and tables
