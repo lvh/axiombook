@@ -10,6 +10,7 @@ Contents:
    installation.rst
    items.rst
    stores.rst
+   transactions.rst
 
 
 Indices and tables
