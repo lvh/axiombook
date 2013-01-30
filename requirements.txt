@@ -1,4 +1,5 @@
 Twisted
 Epsilon
+pysqlite2
 Axiom
 Sphinx
