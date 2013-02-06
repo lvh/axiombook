@@ -11,6 +11,7 @@ Contents:
    items.rst
    stores.rst
    transactions.rst
+   powerups.rst
 
 
 Indices and tables
