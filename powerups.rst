@@ -93,13 +93,14 @@ In-memory powerups
 ==================
 
 Sometimes, particularly while experimenting or testing, it may be
-useful to use in-memory powerups instead of regular powerups. They do
-not require a store, because they are not persisted.
+useful to use in-memory powerups instead of regular powerups. These
+are not persisted, and die whenever the object dies.
 
 .. doctest::
 
-    >>> rodimus = Transformer(name=u"Rodimus Prime", damage=50)
-    >>> hotRod = HotRod(color=u"Red and yellow")
+    >>> inMemory = Store()
+    >>> rodimus = Transformer(store=inMemory, name=u"Rodimus Prime", damage=50)
+    >>> hotRod = HotRod(store=inMemory, color=u"Red and yellow")
     >>> rodimus.inMemoryPowerUp(hotRod, ICar)
     >>> assert ICar(rodimus) is hotRod
 
