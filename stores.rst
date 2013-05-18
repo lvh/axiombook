@@ -17,8 +17,8 @@ persisted.
 
     >>> inMemoryStore = Store()
 
-To create a persisted store, pass a path or a FilePath to the store
-constructor:
+To create a persisted store, pass either a path as a string, or a
+``twisted.python.filepath.FilePath`` to the store constructor:
 
 .. doctest::
 
