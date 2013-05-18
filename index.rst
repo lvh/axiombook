@@ -10,6 +10,7 @@ Contents:
    installation.rst
    items.rst
    stores.rst
+   comparisons.rst
    transactions.rst
    powerups.rst
 
