@@ -21,41 +21,40 @@ To demonstrate this, let's create a store with some people in it:
 .. doctest::
 
    >>> store = Store()
-   >>> alice = Person(store=store, name=u"Alice")
-   >>> bob = Person(store=store, name=u"Bob")
-   >>> carol = Person(store=store, name=u"Carol")
+   >>> audrey = Person(store=store, name=u"audreyr")
+   >>> pydanny = Person(store=store, name=u"pydanny")
+   >>> lvh = Person(store=store, name=u"lvh")
 
 
-There's a secret club for people who like ice cream with peanut butter
-flavors. The member's list only has two names on it: Alice and Bob.
+There's a secret club for people who like coffee ice cream:
 
 .. doctest::
 
-   >>> secretClubMemberNames = [u"Alice", u"Bob"]
+   >>> secretClubMemberNames = [u"pydanny", u"lvh"]
 
 We can create a comparison, which we'll call ``inSecretClub``, that
 checks if a person's name is in the list of secret club member names.
+Of course, you could just plug this into the query expression directly.
 
 .. doctest::
 
    >>> inSecretClub = Person.name.oneOf(secretClubMemberNames)
    >>> list(store.query(Person, inSecretClub, sort=Person.name.ascending))
-   [Person(name=u'Alice', storeID=1)@..., Person(name=u'Bob', storeID=2)@...]
+   [Person(name=u'lvh', storeID=3)@..., Person(name=u'pydanny', storeID=2)@...]
 
-Additionally, there's a super secret club for people who like coconut
-flavored ice cream. Both Bob and Carol like coconut flavored ice
-cream. If we want to query all the people who *don't*, we'd use
-``notOneOf``:
+Additionally, there's a super secret club for people who like
+pistachio flavored ice cream. Only lvh likes pistachio ice cream. If
+we want to query all the people who *don't*, we'd use ``notOneOf``:
 
 .. doctest::
 
-   >>> doesntLikeCoconut = Person.name.notOneOf([u"Bob", u"Carol"])
-   >>> list(store.query(Person, doesntLikeCoconut))
-   [Person(name=u'Alice', storeID=1)@...]
+   >>> doesNotLikePistachio = Person.name.notOneOf([u"lvh"])
+   >>> list(store.query(Person, doesNotLikePistachio, sort=Person.name.ascending))
+   [Person(name=u'audreyr', storeID=1)@..., Person(name=u'pydanny', storeID=2)@...]
 
 And that's all there is to it.
 
-``notOneOf`` and ``oneOf`` are supported by almost all attributes
-(except ``inmemory``, since that's inherently unqueryable). That said,
-comparing floats (``ieee754_double``) is probably not what you wanted
--- but that's inherent to floats, not anything specific to Axiom.
+``notOneOf`` and ``oneOf`` are supported by almost all attributes,
+except ``inmemory``. That said, comparing floats (``ieee754_double``)
+is probably not what you wanted -- but that's inherent to floats, not
+anything specific to Axiom.
