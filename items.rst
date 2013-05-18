@@ -131,3 +131,48 @@ that gets called when the item gets created. Let's recite the alphabet:
     >>> assert a.value == "a"
     >>> assert b.value == "b"
     >>> assert c.value == "c"
+
+
+Type names
+==========
+
+Axiom item classes have a "type name", which is the unique name used
+to identify instances of it in an Axiom store, and distinguish them
+from other item classes. If you don't explicitly specify a type name,
+one is automatically generated based on the name of the class and the
+module it's in. These are put into lower case and concatenated with
+underscores. This is done because the type name will be a SQLite table
+name, and therefore has to be a valid SQL identifier.
+
+.. doctest::
+
+    >>> Bunny.typeName
+    'bunny_bunny'
+
+The module is called ``bunny``. In this documentation, there are no
+modules above it; if your module is in a package, it could be
+something like ``'top_mid_leaf_class'``.
+
+There are some benefits to specifying an explicit type name. For
+example, you will be able to change the structure of your package, or
+move items to different, independent packages.
+
+You can specify the type name using the ``typeName`` class attribute:
+
+.. testsetup::
+
+    from axiom import attributes, item
+
+.. doctest::
+
+    >>> class MobileBunny(item.Item):
+    ...     typeName = "mobile_bunny"
+    ...     timesPetted = attributes.integer()
+    >>> MobileBunny.typeName
+    'mobile_bunny'
+
+.. note::
+
+    There's no ubiquitous standard for type names. These will map to
+    SQL tables, so whatever your preference is for those might win
+    out.
