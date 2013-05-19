@@ -21,11 +21,16 @@ format you want (e.g. `html` or `pdf`).
 
 [sphinx]: http://sphinx-doc.org/
 
+The documentation is self-testing using doctests, wich can be run
+using `make doctests`.
+
 ## Contributing
 
 Contributions and issue reports are welcome on [Github][github].
 
 [github]: https://github.com/lvh/axiombook
+
+Please make contributions self-testing using doctest wherever possible!
 
 ## Testing
 
