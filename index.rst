@@ -13,7 +13,7 @@ Contents:
    comparisons.rst
    transactions.rst
    powerups.rst
-
+   upgrading.rst
 
 Indices and tables
 ==================
