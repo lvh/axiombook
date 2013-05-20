@@ -7,7 +7,7 @@ Using pip
 
 Axiom is reasonably easy to install using pip. However, it does require its
 dependency, Epsilon, during ``setup.py egg-info``. That means that it needs to
-be avaiable before pip tries to install Axiom. To make matters worse,
+be available before pip tries to install Axiom. To make matters worse,
 Epsilon, in turn, requires Twisted to be available for ``setup.py
 egg-info``.
 

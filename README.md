@@ -8,7 +8,7 @@ store for Python built on top of SQLite.
 ## Reading
 
 The [current version of the book][current] is graciously hosted by
-[ReadTheDocs](rtd).
+[ReadTheDocs][rtd].
 
 [current]: https://the-axiom-book.readthedocs.org/en/latest/
 [rtd]: https://readthedocs.org
