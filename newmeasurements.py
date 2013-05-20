@@ -10,6 +10,7 @@ class Measurement(item.Item):
 
 def _upgradeMeasurementTemperature(old):
     t = ((old.temperature - 32) * 5 / 9) + 273.15
+    raise RuntimeError()
     return Measurement(store=old.store, pressure=old.pressure, temperature=t)
 
 upgrade.registerUpgrader(_upgradeMeasurementTemperature, "measurement", 1, 2)

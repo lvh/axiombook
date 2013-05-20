@@ -12,16 +12,23 @@ whenever we re-open a store, you should close the store before
 continuing. You can close the store by ending your interpreter
 session.
 
+.. testsetup::
+
+    from axiom import attributes, item, store
+    from tempfile import mkdtemp
+    from twisted.python.filepath import FilePath
+    tempPath = FilePath(mkdtemp())
+
+.. testcleanup::
+
+    tempPath.remove()
+
 Schema versions and upgrader functions
 ======================================
 
 A schema version is an integer describing the current revision of the
 schema. If you don't specify a schema version, your item's default
 schema version is ``1``:
-
-.. testsetup::
-
-    from axiom import attributes, item, store
 
 .. doctest::
 
@@ -100,20 +107,13 @@ degrees Fahrenheit.
 
 .. testsetup:
 
-    from tempfile import mkdtemp
-    storePath = mkdtemp()
     from measurements import Measurement
 
 .. doctest::
 
-    >>> s = store.Store(storePath)
+    >>> s = store.Store(tempPath.child("measurements"))
     >>> measurement = Measurement(store=s, temperature=-100, pressure=100)
     >>> s.close()
-
-.. note::
-
-    The store path is just something temporarily generated when
-    producing the documentation.
 
 You decide that it would be better to change the unit from degrees
 Fahrenheit to Kelvins. Technically, we don't really want to change the
@@ -137,18 +137,14 @@ At this point, we close and reload the store.
 
 .. doctest::
 
-    >>> s = store.Store(storePath)
+    >>> s = store.Store(tempPath.child("measurements"))
     >>> IService(s).startService()
     >>> Measurement.schemaVersion
     2
     >>> s.query(Measurement).count()
-    >>> tK = s.findUnique(Measurement).temperature
-    >>> tK, tF
-    >>> assert tK - 273.15 == (tF - 32) * 5 / 9
-
-.. testcleanup::
-
-    rmtree(storePath)
+    1
+    >>> s.findUnique(Measurement).temperature
+    Decimal('199.81')
 
 Attribute copying upgraders
 ===========================
@@ -156,11 +152,15 @@ Attribute copying upgraders
 One common pattern for upgraders is that they'll re-use most of the
 values the old item has.
 
+TODO: write example
+
 Deleting upgraders
 ==================
 
 Another common pattern for upgraders is to delete an item that was
 previously being stored.
+
+TODO: write example
 
 .. rubric:: Footnotes
 
