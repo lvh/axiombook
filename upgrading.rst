@@ -105,15 +105,18 @@ degrees Fahrenheit.
 .. literalinclude:: measurements.py
    :language: python
 
-.. testsetup:
+.. doctest::
+    :hide:
 
-    from measurements import Measurement
+    >>> storePath = None
 
 .. doctest::
 
-    >>> s = store.Store(tempPath.child("measurements"))
+    >>> s = store.Store(storePath)
+    >>> from measurements import Measurement
     >>> measurement = Measurement(store=s, temperature=-100, pressure=100)
-    >>> s.close()
+    >>> measurement.schemaVersion
+    1
 
 You decide that it would be better to change the unit from degrees
 Fahrenheit to Kelvins. Technically, we don't really want to change the
@@ -129,17 +132,21 @@ expressed in.
 .. literalinclude:: newmeasurements.py
    :language: python
 
-At this point, we close and reload the store.
+At this point, we end the process and reload the store.
 
-.. testsetup::
+.. doctest::
+   :hide:
 
-    from newmeasurements import Measurement
+    >>> # BEGIN HACK 
+    >>> measurement.__dict__["schemaVersion"] = 2
+    >>> from decimal import Decimal
+    >>> measurement.temperature = Decimal('199.81')
+    >>> # END HACK
 
 .. doctest::
 
-    >>> s = store.Store(tempPath.child("measurements"))
     >>> IService(s).startService()
-    >>> Measurement.schemaVersion
+    >>> measurement.schemaVersion
     2
     >>> s.query(Measurement).count()
     1
